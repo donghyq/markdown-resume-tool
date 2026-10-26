@@ -1,0 +1,13 @@
+'use strict';
+const fs = require('node:fs');
+const path = require('node:path');
+const {execFileSync} = require('node:child_process');
+const {render} = require('../src/core.cjs');
+const root = path.resolve(__dirname, '..');
+const editorPath = path.join(root, 'index.html');
+const before = fs.readFileSync(editorPath, 'utf8');
+execFileSync(process.execPath, [path.join(root, 'build.cjs')], {stdio:'inherit'});
+if (before !== fs.readFileSync(editorPath, 'utf8')) throw new Error('index.html 与源码不一致；运行 npm run build 并提交更新。');
+const markdown = fs.readFileSync(path.join(root,'examples/sample.md'), 'utf8');
+if (render(markdown) !== fs.readFileSync(path.join(root,'examples/sample.html'),'utf8')) throw new Error('HTML 样品与 Markdown 不一致；运行 npm run sample 并提交更新。');
+console.log('PASS：离线编辑器、内置样品和导出 HTML 与源码一致。');

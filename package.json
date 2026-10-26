@@ -1,0 +1,19 @@
+{
+  "name": "markdown-resume-tool",
+  "version": "1.0.0",
+  "private": true,
+  "description": "离线 Markdown 简历编辑器与 A4 HTML / PDF 导出工具",
+  "license": "MIT",
+  "author": "donghyq",
+  "homepage": "https://github.com/donghyq/markdown-resume-tool#readme",
+  "repository": { "type": "git", "url": "https://github.com/donghyq/markdown-resume-tool.git" },
+  "scripts": {
+    "build": "node build.cjs",
+    "sample": "node cli.cjs examples/sample.md --html examples/sample.html",
+    "test": "node --test tests/core.test.cjs",
+    "test:browser": "node tests/browser.cjs",
+    "check": "npm test && node scripts/check-build.cjs"
+  },
+  "optionalDependencies": { "playwright": "1.62.1" },
+  "engines": { "node": ">=20" }
+}

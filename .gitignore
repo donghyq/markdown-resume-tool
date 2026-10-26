@@ -1,0 +1,8 @@
+node_modules/
+tmp/
+.DS_Store
+.codebase-memory/
+.env
+.env.*
+*.log
+dist/
